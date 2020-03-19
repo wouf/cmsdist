@@ -1,2 +1,2 @@
-Requires: onnxruntime py3-numpy py2-onnx
+Requires: onnxruntime
 %define PipDownloadSourceType none
