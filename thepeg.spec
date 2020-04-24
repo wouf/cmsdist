@@ -1,10 +1,9 @@
-### RPM external thepeg 2.1.4
+### RPM external thepeg 2.2.0
 ## INITENV +PATH LD_LIBRARY_PATH %{i}/lib/ThePEG
 ## INITENV +PATH DYLD_LIBRARY_PATH %{i}/lib/ThePEG
 
 # Download from official webpage
 Source: http://www.hepforge.org/archive/thepeg/ThePEG-%{realversion}.tar.bz2
-Patch0: thepeg-2.1.1-gcc8
 
 Requires: lhapdf
 Requires: gsl OpenBLAS
@@ -24,7 +23,7 @@ BuildRequires: lhapdf
 
 %prep
 %setup -q -n ThePEG-%{realversion}
-%patch0 -p1
+
 # Regenerate build scripts
 autoreconf -fiv
 
@@ -36,8 +35,8 @@ PLATF_CONF_OPTS="--enable-shared --disable-static"
 
 # Update to detect aarch64 and ppc64le
 rm -f ./Config/config.{sub,guess}
-curl -L -k -s -o ./Config/config.guess http://cmsrep.cern.ch/cmssw/download/config/config.guess
-curl -L -k -s -o ./Config/config.sub http://cmsrep.cern.ch/cmssw/download/config/config.sub
+%get_config_sub ./Config/config.sub
+%get_config_guess ./Config/config.guess
 chmod +x ./Config/config.{sub,guess}
 
 sed -i -e "s|-lgslcblas|-lopenblas|" ./configure

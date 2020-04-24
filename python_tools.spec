@@ -3,15 +3,12 @@
 ## INITENV +PATH PYTHON3PATH %{i}/${PYTHON3_LIB_SITE_PACKAGES}
 Source: none
  
-Requires: root curl python python3 xrootd llvm hdf5
+Requires: root curl python python3 xrootd llvm hdf5 mxnet-predict
 
-%define isslc7 %(case %{cmsplatf} in (slc7_amd64*) echo 1 ;; (*) echo 0 ;; esac)
-%define isamd64 %(case %{cmsplatf} in (*amd64*) echo 1 ;; (*) echo 0 ;; esac)
 Requires: py2-scipy
 Requires: py2-Keras
 Requires: py2-Theano
 Requires: py2-scikit-learn
-Requires: py2-rootpy
 Requires: py2-tensorflow py3-tensorflow
 Requires: py2-googlePackages
 
@@ -36,7 +33,6 @@ Requires: py2-hyperopt
 Requires: py2-seaborn
 Requires: py2-h5py
 Requires: py2-h5py-cache
-Requires: py2-thriftpy
 Requires: py2-root_pandas
 Requires: py2-uproot
 Requires: py2-oamap
@@ -143,7 +139,7 @@ Requires: py2-dxr-toolfile
 Requires: py2-PyYAML
 Requires: py2-pylint
 Requires: py2-pip
-%if %isamd64
+%ifarch x86_64
 Requires: py2-cx-Oracle
 %endif
 Requires: py2-cython
@@ -167,7 +163,7 @@ Requires: py2-backports_abc
 Requires: py2-colorama
 Requires: py2-lxml
 Requires: py2-beautifulsoup4
-Requires: py2-GitPython
+Requires: py2-GitPython py3-GitPython
 Requires: py2-Send2Trash
 Requires: py2-gitdb2
 Requires: py2-ipaddress
@@ -217,9 +213,17 @@ Requires: py2-pylint
 Requires: py2-pytest-cov
 Requires: py2-wrapt
 
+Requires: py2-distlib
+Requires: py2-filelock
+Requires: py3-gitdb
+Requires: py2-importlib-resources
+Requires: py2-smmap
+Requires: py2-zipp py3-zipp
+
+
 %ifnarch ppc64le
 Requires: py2-pycuda
-Requires: py3-onnxruntime
+Requires: onnxruntime
 %endif
 
 %prep
