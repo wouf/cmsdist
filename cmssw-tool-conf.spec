@@ -159,7 +159,6 @@ Requires: gcc-checker-plugin-toolfile
 Requires: openldap-toolfile
 Requires: gperftools-toolfile
 Requires: cuda-toolfile
-Requires: cub-toolfile
 Requires: alpaka-toolfile
 Requires: cupla-toolfile
 
