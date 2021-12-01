@@ -2,7 +2,7 @@
 # With cmsBuild, change the above version only when a new tool is added
 
 ## NOCOMPILER
-## INSTALL_DEPENDENCIES cmsLHEtoEOSManager gcc-fixincludes
+## INSTALL_DEPENDENCIES cmsLHEtoEOSManager gcc-fixincludes cmssw-osenv cms-git-tools
 
 Requires: crab
 Requires: cmssw-wm-tools
@@ -156,7 +156,6 @@ Requires: dablooms-toolfile
 
 # Only for Linux platform.
 %ifos linux
-Requires: gcc-checker-plugin-toolfile
 Requires: openldap-toolfile
 Requires: gperftools-toolfile
 Requires: cuda-toolfile
